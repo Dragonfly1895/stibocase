@@ -1,18 +1,27 @@
 plugins {
     id 'java'
-    id 'io.quarkus'
+    id 'io.quarkus' version '3.23.3'
 }
 
 repositories {
     mavenCentral()
-    mavenLocal()
+    //mavenLocal()
 }
 
 dependencies {
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
-    implementation 'io.quarkus:quarkus-resteasy'
-    implementation 'io.quarkus:quarkus-resteasy-jackson'
+
+    // Replaces 'io.quarkus:quarkus-resteasy-reactive'
+    implementation 'io.quarkus:quarkus-rest'
+
+    // Replaces 'io.quarkus:quarkus-resteasy-reactive-jackson'
+    implementation 'io.quarkus:quarkus-rest-jackson'
+
+    implementation 'io.quarkus:quarkus-hibernate-validator'
+
     implementation 'io.quarkus:quarkus-arc'
+
+    //implementation 'io.quarkus:quarkus-native'
     testImplementation 'io.quarkus:quarkus-junit5'
     testImplementation 'io.rest-assured:rest-assured'
 }
